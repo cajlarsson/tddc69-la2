@@ -4,11 +4,9 @@
 package step1;
 
 import javax.swing.*;
+import java.awt.Color;
 
-/**
- * @author Rita Kovordányi
- *
- */
+
 public class DrawingTool {
 	
 	/**
@@ -19,9 +17,10 @@ public class DrawingTool {
 	 * @param args Not used
 	 */
 	public static void main(String[] args) {
-		View gui = new DrawingWindow("My Drawing Tool 1");
 		Model contents = new ForegroundComponents();
-		gui.addToNotifyList(contents);
+		View gui = new DrawingWindow("My Drawing Tool 1");
+		gui.setNotifyList(contents);
+		//	contents.addShape( new Square(Color.RED, 34,56) );
 	}
 
 }

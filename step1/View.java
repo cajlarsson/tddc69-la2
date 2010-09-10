@@ -6,10 +6,7 @@ package step1;
 import java.awt.*;
 import javax.swing.*;
 
-/**
- * @author Rita Kovordányi
- *
- */
+
 public class View extends JComponent {
 	private static Model contents;   // could be a list of several models
 
@@ -20,7 +17,7 @@ public class View extends JComponent {
 	 *  
 	 * @param contents
 	 */
-	public void addToNotifyList(Model contents) {
+	public void setNotifyList(Model contents) {
 		this.contents = contents;
 	}
 	
@@ -30,8 +27,8 @@ public class View extends JComponent {
 	 * 
 	 * @param shape The newly created shape to add
 	 */
-	public void addToContents(MyShape shape) {
-		contents.addShape(shape);
+    public void addToContents(MyShape shape) {
+	contents.addShape(shape);
 	}
 	
 	/**

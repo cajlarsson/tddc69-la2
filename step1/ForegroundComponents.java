@@ -6,13 +6,7 @@ package step1;
 import java.awt.*;
 import java.util.*;
 
-/**
- * @author Rita Kovordányi
- * 
- * Using class MyShape to differentiate if from
- * java.awt.Shape
- *
- */
+
 public class ForegroundComponents implements Model {
 	private ArrayList<MyShape> allShapes = new ArrayList<MyShape>();
 		
@@ -28,11 +22,13 @@ public class ForegroundComponents implements Model {
 	 * each time the whole gui is redrawn.)
 	 * 
 	 */
-	public void drawAll(Graphics g) {
-		for (Iterator<MyShape> iterator = allShapes.iterator(); iterator.hasNext();) {
-			MyShape shape = iterator.next();
-			shape.draw(g);
+	public void drawAll(Graphics g) 
+	{
+		for (MyShape shape : allShapes) 
+		{
+		shape.draw(g);
 		}
 	}
-
+	
 }
+

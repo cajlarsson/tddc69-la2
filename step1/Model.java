@@ -5,10 +5,7 @@ package step1;
 
 import java.awt.Graphics;
 
-/**
- * @author Rita Kovordányi
- *
- */
+
 public interface Model {
 	
 	/**
