@@ -18,7 +18,7 @@ public class ClickableSurface extends View {
 		
 		public void mousePressed(MouseEvent ev) 
 		{
-			addToContents(shapeFactory.newShape(mouseX, mouseY));
+		    addToContents(shapeFactory.newShape(ev.getX(),ev.getY()));
 			paintTimer.start();
 			repaint();
 	        }
@@ -39,8 +39,8 @@ public class ClickableSurface extends View {
 			public void mouseMoved(MouseEvent e) 
 			{
 
-				mouseX = e.getX();
-				mouseY = e.getY();
+			    //	mouseX = e.getX();
+			    //	mouseY = e.getY();
 			}
 			
 			public void mouseDragged(MouseEvent e) 
