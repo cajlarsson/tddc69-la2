@@ -9,23 +9,20 @@ import javax.swing.Timer;
 
 public class ClickableSurface extends View {
 	
-
-	private Timer paintTimer;
-	private int mouseX;
-	private int mouseY;
+	
 	private class ClickListener extends MouseAdapter 
 	{
 		
 		public void mousePressed(MouseEvent ev) 
 		{
-		    addToContents(shapeFactory.newShape(ev.getX(),ev.getY()));
-			paintTimer.start();
+			addToContents(shapeFactory.newShape(ev.getX(),ev.getY()));
+			
 			repaint();
 	        }
 		
 		public void mouseReleased(MouseEvent ev)
 		{
-			paintTimer.stop();
+		
 
 		}
 	}
@@ -34,13 +31,14 @@ public class ClickableSurface extends View {
 	public ClickableSurface(ShapeFactory shapeFactory)
 	{
 		addMouseListener(new ClickListener());
-		addMouseMotionListener(new MouseMotionListener()
+	   
+		/*addMouseMotionListener(new MouseMotionListener()
 		{
 			public void mouseMoved(MouseEvent e) 
 			{
 
-			    //	mouseX = e.getX();
-			    //	mouseY = e.getY();
+			    	mouseX = e.getX();
+			    	mouseY = e.getY();
 			}
 			
 			public void mouseDragged(MouseEvent e) 
@@ -50,25 +48,9 @@ public class ClickableSurface extends View {
 
 			}
 
-		});
-		
-		final ShapeFactory fu = shapeFactory;
-		
+			});*/
 		this.shapeFactory = shapeFactory;
-	
-
-		paintTimer = new Timer(10,new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				addToContents(fu.newShape(mouseX, mouseY));
-				repaint();
-			
-			}
-		});
 		
-
-
 	}
 
 	public void paintComponent(Graphics g) {
