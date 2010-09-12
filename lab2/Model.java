@@ -7,6 +7,7 @@ import java.util.*;
 public class Model // 
 {
 	private ArrayList<MyShape> shapeList;
+	private int selectedShape;
 	
 	public Model()
 	{
@@ -32,9 +33,41 @@ public class Model //
 		}
 
 	}
+
+       	public void setSelectedShape(int x, int y)
+	{
+		for ( int i = shapeList.size() -1 ; i >= 1 ; i--) 
+		{
+			int sX = shapeList.get(i).getX();
+			int sY = shapeList.get(i).getY();
+			
+			if ((x >= sX) 
+			    && (x <= (sX +40)) 
+			    && (y >= sY)
+			    && (y <= (sY +40)))
+			{
+				selectedShape = i;
+				break;
+			}
+		}
+		selectedShape = -1;
+	}
 	
-	//public whatsAt(int x int y)
-    
+	public void moveSelectedTo(int x, int y)
+	{
+		if (selectedShape != -1)
+		{
+			shapeList.get(selectedShape).setLocation(x,y);
+		}
+	}
+
+	public void deleteSelected()
+	{
+		if (selectedShape != -1)
+		{
+			shapeList.remove(selectedShape);
+		}
+	}
     
 }
     
