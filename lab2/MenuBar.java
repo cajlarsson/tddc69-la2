@@ -4,6 +4,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+/**
+ * Menypanelen, skapar sina egna form och färg knappar och anpassar formfabriken
+ * vid klick på dessa
+ */
 public class MenuBar extends JPanel
 {
 	private  ShapeFactory shapeFactory ; 
@@ -84,7 +88,9 @@ public class MenuBar extends JPanel
 		}
 		
 	}
-				      
+    /**
+     * Bygger hela skiten
+     */				      
 	
 	public MenuBar(ShapeFactory shapeFactory) 
 	{

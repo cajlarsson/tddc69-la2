@@ -4,6 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 import java.io.*;
+
+/**
+ *Håller koll på alla former i en ArrayList
+ */
+
 public class Model implements Serializable
 {
 	private ArrayList<MyShape> shapeList;

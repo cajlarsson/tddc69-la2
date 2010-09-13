@@ -6,6 +6,10 @@ package lab2;
 import java.awt.*;
 import java.io.*;
 
+
+/**
+ * Abstrakt basklass som implemeterar det mesta av formernas metoder
+ */ 
 public abstract class MyShape implements Cloneable, Serializable{ 
 	protected Color color;
 	protected int x, y;
@@ -15,10 +19,16 @@ public abstract class MyShape implements Cloneable, Serializable{
 		this.x = x;
 		this.y = y;
 	}
-
-	public void draw(Graphics g) {
+	
+	/**
+	 * Skall överlagras så att respektive form ritas ut korrekt
+	 */
+	public abstract void draw(Graphics g) {
 	}
-
+	
+	/**
+	 * Anropar Object.clone() och fångar exception
+	 */
 	public Object clone()
 	{
 		Object clone = null;
@@ -29,7 +39,10 @@ public abstract class MyShape implements Cloneable, Serializable{
 		}
 		return clone;
 	}
-	
+
+	/**
+	 * Anger färg 
+	 */
 	public void setColor(Color color)
 	{
 		this.color = color;
@@ -39,17 +52,27 @@ public abstract class MyShape implements Cloneable, Serializable{
 		return this.color;
 	}
 		
+/**
+ * Flyttar formen
+ */
 	public void setLocation(int x, int y)
 	{
 		this.x = x;
 		this.y = y;
 	}
 
-	public int getX()
+/**
+ * Ger X-koordinaten
+ */
+ 	public int getX()
 	{
 		return x;
 	}
 	
+/**
+ * Ger Y-koordinaten
+ */
+
 	public int getY()
 	{
 		return y;

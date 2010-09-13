@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Varje fönster är en instans av denna klass
+ *
+ */
 public class Window extends JFrame //
 {
 	private ShapeFactory shapeFactory;
@@ -87,6 +91,12 @@ public class Window extends JFrame //
 			});
 		}
 	}
+
+	/**
+	 * Denna konstruktor tar fönstrets namn och vilket kontrollerar-objekt  som
+	 * den använder. Instansierar en egen meny och dekorerar den.
+	 *
+	 */
 	public Window(String name, Controller controller)
 	{
 	    super(name);
@@ -109,14 +119,6 @@ public class Window extends JFrame //
 	    setSize(800,600);
 	    setVisible(true);
 	}
-
-	public void addShapeAt(int x, int y)
-	{
-		controller.addShape(shapeFactory.newShape(x,y));
-	}
-	
-
-	
 }
     
 

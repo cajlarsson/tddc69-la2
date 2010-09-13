@@ -5,6 +5,10 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
+
+/**
+ * Ritytan som alla former ritas ut på
+ */
 public class PaintArea extends JComponent implements Observer{
 	
 	private class ClickListener extends MouseAdapter 
@@ -20,8 +24,7 @@ public class PaintArea extends JComponent implements Observer{
 			} 
 			else
 			{
-				//controller.setSelectedShape(ev.getX(),ev.getY());
-				controller.deleteSelected();				
+			    controller.deleteSelected();				
 			}
 	        }
 		
@@ -33,7 +36,13 @@ public class PaintArea extends JComponent implements Observer{
 	  
 	private ShapeFactory shapeFactory;
 	private Controller controller;
+	
 
+/**
+ * Ritytan kopplas till en formfabrik och en kontrollerare samt lägger till
+ * lystnare för drag
+ */
+	
 	public PaintArea(ShapeFactory shapeFactory, Controller controller)
 	{
 		super();
@@ -57,13 +66,19 @@ public class PaintArea extends JComponent implements Observer{
 		this.shapeFactory = shapeFactory;
 		this.controller = controller;
 	}
-
+/**
+ * Överlagrad funktion för Swingsutritningsytemet
+ */
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.white);
 		g.fillRect(0,0,this.getWidth( ), this.getHeight());
 		controller.drawShapes(g);
 	}
-
+     
+/**
+ * Överlagrad funktion från Observer interface:et som anropas när fönstret
+ * ska ritas om
+ */
 	public void update(Observable o, Object arg)
 	{
 		repaint();
