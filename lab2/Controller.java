@@ -3,7 +3,7 @@ package lab2;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
-
+import java.io.*;
 public class Controller extends Observable
 {
 	private Model model;
@@ -12,11 +12,7 @@ public class Controller extends Observable
 	{
 		super();
 		Window firstWindow = new Window("1st Window",this);
-		
 		model = new Model();
-		
-		
-		
 	}
 
 	public void drawShapes(Graphics g)
@@ -57,6 +53,45 @@ public class Controller extends Observable
 		notifyObservers();
 	}
 
+	public void saveModel()
+	{
+		try
+		{
+			FileOutputStream fileOutStream = new FileOutputStream(
+				"alotofshapes.bin");
+			ObjectOutputStream objectOutStream = new ObjectOutputStream(
+				fileOutStream);
+			objectOutStream.writeObject(model);
+		}catch(IOException ex)
+		{
+			ex.printStackTrace();
+			
+		}
+       	}
+	
+	public void loadModel()
+	{
+		try 
+		{
+			FileInputStream fileInStream = new FileInputStream(
+				"alotofshapes.bin");
+			ObjectInputStream objectInStream = new ObjectInputStream(
+				fileInStream);
+			model = (Model) objectInStream.readObject();
+			setChanged();		
+			notifyObservers();
+			
+		}catch(IOException ex)
+		{
+			ex.printStackTrace();
+   
+		}
+		catch(ClassNotFoundException ex)
+		{
+			ex.printStackTrace();
+		}
+	}
 }
+
  
  

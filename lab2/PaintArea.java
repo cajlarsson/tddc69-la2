@@ -7,13 +7,10 @@ import java.util.*;
 
 public class PaintArea extends JComponent implements Observer{
 	
-	
 	private class ClickListener extends MouseAdapter 
 	{
-		
 		public void mouseClicked(MouseEvent ev) 
 		{
-
 			int button = ev.getButton();
 			
 			if(button == MouseEvent.BUTTON1)
@@ -40,6 +37,7 @@ public class PaintArea extends JComponent implements Observer{
 	public PaintArea(ShapeFactory shapeFactory, Controller controller)
 	{
 		super();
+
 		addMouseListener(new ClickListener());
 	   
 		final Controller fController = controller;

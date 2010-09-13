@@ -3,8 +3,8 @@ package lab2;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
-
-public class Model // 
+import java.io.*;
+public class Model implements Serializable
 {
 	private ArrayList<MyShape> shapeList;
 	private int selectedShape;
@@ -12,7 +12,6 @@ public class Model //
 	public Model()
 	{
 		shapeList = new ArrayList<MyShape>();
-
 	}
 	
 	public void clearShapes()
@@ -31,7 +30,6 @@ public class Model //
 		{
 			shapeList.get(i).draw(g);
 		}
-
 	}
 
        	public void setSelectedShape(int x, int y)
@@ -51,7 +49,6 @@ public class Model //
 				break;
 			}
 		}
-		//	deleteSelected();
 	}
 	
 	public void moveSelectedTo(int x, int y)

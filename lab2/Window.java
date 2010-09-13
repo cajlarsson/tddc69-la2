@@ -8,15 +8,22 @@ public class Window extends JFrame //
 {
 	private ShapeFactory shapeFactory;
 	private Controller controller;
+	
+	private class OurButton extends JButton
+	{
+		public OurButton(String name)
+		{
+			super(name);
+			this.setFont(new Font("Monospace",0, 12));
+		}
+	}	
+	
 
-	private class WindowButton extends JButton
+	private class WindowButton extends OurButton
 	{
 		public WindowButton(String name)
 		{
 			super(name);
-
-			this.setFont(new Font("Monospace",0, 12));
-			
 			final Controller fC = controller;
 			this.addActionListener( new ActionListener()
 			{
@@ -28,14 +35,12 @@ public class Window extends JFrame //
 		}
 	}			  
     
-	private class ClearButton extends JButton
+	private class ClearButton extends OurButton
 	{
 		public ClearButton(String name)
 		{
 			super(name);
 
-			this.setFont(new Font("Monospace",0, 12));
-			
 			final Controller fC = controller;
 			this.addActionListener( new ActionListener()
 			{
@@ -45,39 +50,64 @@ public class Window extends JFrame //
 				}
 			});
 		}
-	}			  
-    
+	} 
 
-	
-	
-	
 
-	
+	private class SaveButton extends OurButton
+	{
+
+		public SaveButton(String name)
+		{
+			super(name);
+			
+			final Controller fC = controller;
+			this.addActionListener( new ActionListener()
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					fC.saveModel();
+				}
+			});
+		}
+	}
+	private class LoadButton extends OurButton
+	{
+
+		public LoadButton(String name)
+		{
+			super(name);
+			
+			final Controller fC = controller;
+			this.addActionListener( new ActionListener()
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					fC.loadModel();
+				}
+			});
+		}
+	}
 	public Window(String name, Controller controller)
 	{
 	    super(name);
 	    
 	    this.controller = controller;
-	    
 	    shapeFactory = new ShapeFactory();
-	    
 	    setLayout(new BorderLayout());
-	    
 	    
 	    PaintArea paintArea = new PaintArea(shapeFactory,controller);
 	    controller.addObserver(paintArea);
-	    
 	    add(paintArea,BorderLayout.CENTER);
 	    
 	    MenuBar menuBar = new MenuBar(shapeFactory);
 	    menuBar.add(new WindowButton("New Window"));
 	    menuBar.add(new ClearButton("Clear Shapes"));
+	    menuBar.add(new SaveButton("Save Shapes"));
+	    menuBar.add(new LoadButton("Load Shapes"));
 	    add(menuBar,BorderLayout.WEST);
 	    
 	    setSize(800,600);
 	    setVisible(true);
-
-
 	}
 
 	public void addShapeAt(int x, int y)

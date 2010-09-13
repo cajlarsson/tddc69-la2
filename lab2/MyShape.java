@@ -4,9 +4,9 @@
 package lab2;
 
 import java.awt.*;
+import java.io.*;
 
-
-public abstract class MyShape implements Cloneable{ 
+public abstract class MyShape implements Cloneable, Serializable{ 
 	protected Color color;
 	protected int x, y;
 

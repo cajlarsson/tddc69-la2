@@ -96,6 +96,8 @@ public class MenuBar extends JPanel
 		this.setBackground(Color.red);
 
 		this.add(new ShapeButton("Square",new Square(Color.black,0,0)));
+		this.add(new ShapeButton("Hypocube",new Hypocube(Color.black,0,0)));
+		this.add(new ShapeButton("Hyposphere",new Hyposphere(Color.black,0,0)));
 		this.add(new ShapeButton("Circle",new Circle(Color.black,0,0)));
 		this.add(new ShapeButton("Triangle",new Triangle(Color.black,0,0)));
 		this.add(new ColorButton("Red",Color.red));
