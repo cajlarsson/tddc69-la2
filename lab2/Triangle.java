@@ -18,7 +18,9 @@ public class Triangle extends MyShape
 	public void draw(Graphics g) 
 	{
 		g.setColor(color);
-		//		g.fillTriangle(x,y,x+40,y+40 ,x+20,y+20);
+		int xArray[]= {x,x+40,x};
+		int yArray[]= {y,y+20,y+40};
+		g.fillPolygon(xArray,yArray,3);
 	}
 
 

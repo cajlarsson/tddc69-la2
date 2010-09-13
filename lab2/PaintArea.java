@@ -13,14 +13,17 @@ public class PaintArea extends JComponent implements Observer{
 		
 		public void mouseClicked(MouseEvent ev) 
 		{
-			if(ev.getButton() == MouseEvent.BUTTON1)
+
+			int button = ev.getButton();
+			
+			if(button == MouseEvent.BUTTON1)
 			{
 				controller.addShape(
 					shapeFactory.newShape(ev.getX(), ev.getY())); 
-				
-			} else if ( ev.getButton() == MouseEvent.BUTTON2)
+			} 
+			else
 			{
-				controller.setSelectedShape(ev.getX(),ev.getY());
+				//controller.setSelectedShape(ev.getX(),ev.getY());
 				controller.deleteSelected();				
 			}
 	        }

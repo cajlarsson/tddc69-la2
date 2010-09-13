@@ -12,9 +12,10 @@ public class Controller extends Observable
 	{
 		super();
 		Window firstWindow = new Window("1st Window",this);
+		
 		model = new Model();
 		
-		model.addShape(new Square(Color.red, 200,200));
+		
 		
 	}
 
@@ -47,6 +48,13 @@ public class Controller extends Observable
 	public void setSelectedShape(int x, int y)
 	{
 		model.setSelectedShape(x,y);
+	}
+    
+	public void clearShapes()
+	{
+		model.clearShapes();
+		setChanged();		
+		notifyObservers();
 	}
 
 }

@@ -36,7 +36,8 @@ public class Model //
 
        	public void setSelectedShape(int x, int y)
 	{
-		for ( int i = shapeList.size() -1 ; i >= 1 ; i--) 
+		selectedShape = -1;
+		for ( int i = shapeList.size() -1 ; i >= 0; i--) 
 		{
 			int sX = shapeList.get(i).getX();
 			int sY = shapeList.get(i).getY();
@@ -44,13 +45,13 @@ public class Model //
 			if ((x >= sX) 
 			    && (x <= (sX +40)) 
 			    && (y >= sY)
-			    && (y <= (sY +40)))
+			    && (y <= (sY +40) ))
 			{
 				selectedShape = i;
 				break;
 			}
 		}
-		selectedShape = -1;
+		//	deleteSelected();
 	}
 	
 	public void moveSelectedTo(int x, int y)
@@ -68,6 +69,7 @@ public class Model //
 			shapeList.remove(selectedShape);
 		}
 	}
+
     
 }
     

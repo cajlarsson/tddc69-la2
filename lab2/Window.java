@@ -2,11 +2,56 @@ package lab2;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class Window extends JFrame //
 {
 	private ShapeFactory shapeFactory;
 	private Controller controller;
+
+	private class WindowButton extends JButton
+	{
+		public WindowButton(String name)
+		{
+			super(name);
+
+			this.setFont(new Font("Monospace",0, 12));
+			
+			final Controller fC = controller;
+			this.addActionListener( new ActionListener()
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					Window newWindow = new Window("Derivate", fC);
+				}
+			});
+		}
+	}			  
+    
+	private class ClearButton extends JButton
+	{
+		public ClearButton(String name)
+		{
+			super(name);
+
+			this.setFont(new Font("Monospace",0, 12));
+			
+			final Controller fC = controller;
+			this.addActionListener( new ActionListener()
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					fC.clearShapes();
+				}
+			});
+		}
+	}			  
+    
+
+	
+	
+	
+
 	
 	public Window(String name, Controller controller)
 	{
@@ -25,10 +70,14 @@ public class Window extends JFrame //
 	    add(paintArea,BorderLayout.CENTER);
 	    
 	    MenuBar menuBar = new MenuBar(shapeFactory);
+	    menuBar.add(new WindowButton("New Window"));
+	    menuBar.add(new ClearButton("Clear Shapes"));
 	    add(menuBar,BorderLayout.WEST);
 	    
 	    setSize(800,600);
 	    setVisible(true);
+
+
 	}
 
 	public void addShapeAt(int x, int y)
