@@ -13,22 +13,34 @@ public class Model implements Serializable
 {
 	private ArrayList<MyShape> shapeList;
 	private int selectedShape;
-	
-	public Model()
+
+	/**
+	 * Skapar en tom lista med former
+	 */ 
+    	public Model()
 	{
 		shapeList = new ArrayList<MyShape>();
 	}
-	
+
+	/**
+	 * Tömmer listan med former
+	 */
 	public void clearShapes()
 	{
 		shapeList = new ArrayList<MyShape>();
 	}
 	
+	/**
+	 * Lägger till en form i listan
+	 */
 	public void addShape(MyShape shape)
 	{
 		shapeList.add(shape);		
 	}
-	
+
+	/**
+	 * Ritar ut alla former på en Graphics
+	 */
 	public void drawAll(Graphics g)
 	{
 		for ( int i =  0; i < shapeList.size(); i++)
@@ -37,6 +49,9 @@ public class Model implements Serializable
 		}
 	}
 
+	/**
+	 * Markerar det objekt som ligger högst upp på position x,y
+	 */
        	public void setSelectedShape(int x, int y)
 	{
 		selectedShape = -1;
@@ -56,6 +71,9 @@ public class Model implements Serializable
 		}
 	}
 	
+	/**
+	 * Flyttar den markerade formen till ett koordinatpar
+	 */
 	public void moveSelectedTo(int x, int y)
 	{
 		if (selectedShape != -1)
@@ -63,7 +81,10 @@ public class Model implements Serializable
 			shapeList.get(selectedShape).setLocation(x,y);
 		}
 	}
-
+	
+	/**
+	 * Tar bort den markerade formen
+	 */
 	public void deleteSelected()
 	{
 		if (selectedShape != -1)

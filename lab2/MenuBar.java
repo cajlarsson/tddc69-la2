@@ -86,12 +86,11 @@ public class MenuBar extends JPanel
 				}
 			});      
 		}
-		
 	}
-    /**
-     * Bygger hela skiten
-     */				      
-	
+
+	/**
+	 * Bygger hela skiten
+	 */				      
 	public MenuBar(ShapeFactory shapeFactory) 
 	{
 		super();

@@ -9,10 +9,11 @@ import java.awt.Color;
  */
 public class Lab2 
 {
-/**
- * Startas av Java Runtime-miljön
- *
- */
+
+	/**
+	 * Startas av Java Runtime-miljön
+	 *
+	 */
 	public static void main(String[] args)
 	{
 		Controller apa = new Controller();
