@@ -1,0 +1,42 @@
+\documentclass[a4paper,8pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}      
+\usepackage[swedish]{babel}
+\usepackage{inconsolata}
+\begin{document}
+
+\title{Designbeslut för labb 2}
+\author{Caj Larsson\\Erik Lindholm}
+\maketitle
+
+Vårt första beslut var att dumpa det givna kodskelettet. Vi lade i början ned 
+mycket tid på att försöka förstå hur det var tänkt att den skulle kunna byggas
+ut till något som uppfyller alla krav. När vi började om från scratch gick det
+betydligt mycket fortare och vi kunde återanvända i princip all vår egna kod 
+utan speciellt mycket omarbetning.
+
+Vi valde att ha en klass som enbart instansierar vår kontrollerare som sedan
+instansierar allt som behövs.
+
+Kontrolleraren är tänkt att det skall finnas en av. Den innehåller en modell
+som den agerar gränsnitt mot, och ärver in \texttt{Observable}. Detta 
+mellanlager har vi för att hålla modellen så enkel som möjligt då det är 
+troligt att den byts ut mot en med bättre prestanda. Ingen annan klass än 
+kontrolleraren gör saker med modellen för att vi ska vara säkra på att ingen
+ändring sker utan att ritytorna blir uppdaterade om detta.
+
+Modellklassen är i princip en behållare för \texttt{MyShape} objekt med ett
+speciellt gränsnitt. Den har även koll på vilken form man har markerat.
+
+Vår fönsterklass skapar en menypanel med de knappar som rör vår formfabrik, de
+andra knapparna kräver tillgång till objekt vi inte tycker att den bör 
+känna till. I sin konstruktor lägger den till sin rityta i kontrollerarens 
+notifieringslista.
+
+Menypanelen har två stycken privata knappklasser som i sin konstruktor antingen
+tar en färg eller en prototypform. I konstruktorn tar den sitt fönsters 
+formfabrik som knapparnas metoder ändrar prototypen påå 
+
+
+\end{document}
+
