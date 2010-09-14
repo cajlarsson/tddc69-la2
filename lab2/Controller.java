@@ -7,14 +7,14 @@ import java.io.*;
 
 
 /**
- * Kontrolleraren har koll på modellen och skapar det första fönstret 
+ * Kontrolleraren har koll pÃ¥ modellen och skapar det fÃ¶rsta fÃ¶nstret 
  */
 public class Controller extends Observable
 {
 	private Model model;
 	
 	/**
-	 *  Skapar modellen och ett fönster
+	 *  Skapar modellen och ett fÃ¶nster
 	 */
 	public Controller()
 	{
@@ -24,7 +24,7 @@ public class Controller extends Observable
 	}
 	
 	/**
-	 * Skickar vidare till modellens metod för att rita formerna
+	 * Skickar vidare till modellens metod fÃ¶r att rita formerna
 	 */
 	public void drawShapes(Graphics g)
 	{
@@ -32,8 +32,8 @@ public class Controller extends Observable
 	}
 
 	/**
-	 * Säger åt modellen att lägga till en form och medelar alla Observer 
-	 * att modellen har ändrats
+	 * SÃ¤ger Ã¥t modellen att lÃ¤gga till en form och medelar alla Observer 
+	 * att modellen har Ã¤ndrats
 	 */
 	public void addShape(MyShape shape)
 	{
@@ -43,8 +43,8 @@ public class Controller extends Observable
 	}
 
 	/**
-	 * Säger åt modellen att flytta den markerade formen och medelar alla
-	 * Observer att modellen har ändrats
+	 * SÃ¤ger Ã¥t modellen att flytta den markerade formen och medelar alla
+	 * Observer att modellen har Ã¤ndrats
 	 */ 
 	public void moveSelectedTo(int x, int y)
 	{
@@ -54,8 +54,8 @@ public class Controller extends Observable
 	}
 
 	/**
-	 * Säger åt modellen att ta bort den markerade formen och medelar alla 
-	 * Observer att modellen har ändrats
+	 * SÃ¤ger Ã¥t modellen att ta bort den markerade formen och medelar alla 
+	 * Observer att modellen har Ã¤ndrats
 	 */
 	public void deleteSelected()
 	{
@@ -65,7 +65,7 @@ public class Controller extends Observable
 	}
 
 	/**
-	 * Säger åt modellen att markera formen på angiven koordinat
+	 * SÃ¤ger Ã¥t modellen att markera formen pÃ¥ angiven koordinat
 	 */	
 	public void setSelectedShape(int x, int y)
 	{
@@ -73,7 +73,7 @@ public class Controller extends Observable
 	}
 	
         /**
-	 * Säger åt modellen att ta bort alla former 
+	 * SÃ¤ger Ã¥t modellen att ta bort alla former 
 	 */	
     	public void clearShapes()
 	{
@@ -83,7 +83,7 @@ public class Controller extends Observable
 	}
 
 	/**
-	 * Sparar hela modellistan på fil
+	 * Sparar hela modellistan pÃ¥ fil
 	 */
 	public void saveModel()
 	{
@@ -101,7 +101,7 @@ public class Controller extends Observable
 		}
        	}
 	/**
-	 * Ersätter modellistan med en läst från fil
+	 * ErsÃ¤tter modellistan med en lÃ¤st frÃ¥n fil
 	 */
 	public void loadModel()
 	{

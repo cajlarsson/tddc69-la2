@@ -11,7 +11,7 @@ public class Lab2
 {
 
 	/**
-	 * Startas av Java Runtime-miljön
+	 * Startas av Java Runtime-miljÃ¶n
 	 *
 	 */
 	public static void main(String[] args)

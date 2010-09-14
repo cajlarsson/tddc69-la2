@@ -7,7 +7,7 @@ import java.util.*;
 
 
 /**
- * Ritytan som alla former ritas ut på
+ * Ritytan som alla former ritas ut pÃ¥
  */
 public class PaintArea extends JComponent implements Observer{
 	
@@ -39,8 +39,8 @@ public class PaintArea extends JComponent implements Observer{
 	
 
 /**
- * Ritytan kopplas till en formfabrik och en kontrollerare samt lägger till
- * lystnare för drag
+ * Ritytan kopplas till en formfabrik och en kontrollerare samt lÃ¤gger till
+ * lystnare fÃ¶r drag
  */
 	
 	public PaintArea(ShapeFactory shapeFactory, Controller controller)
@@ -67,7 +67,7 @@ public class PaintArea extends JComponent implements Observer{
 		this.controller = controller;
 	}
 /**
- * Överlagrad funktion för Swingsutritningsytemet
+ * Ã–verlagrad funktion fÃ¶r Swingsutritningsytemet
  */
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.white);
@@ -76,7 +76,7 @@ public class PaintArea extends JComponent implements Observer{
 	}
      
 /**
- * Överlagrad funktion från Observer interface:et som anropas när fönstret
+ * Ã–verlagrad funktion frÃ¥n Observer interface:et som anropas nÃ¤r fÃ¶nstret
  * ska ritas om
  */
 	public void update(Observable o, Object arg)

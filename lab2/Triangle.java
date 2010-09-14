@@ -20,7 +20,7 @@ public class Triangle extends MyShape
 	}
 
 /**
- * Anv‰nder polygon metoder till utritningen
+ * Anv√§nder polygon metoder till utritningen
  */
 	public void draw(Graphics g) 
 	{

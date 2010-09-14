@@ -6,7 +6,7 @@ import java.util.*;
 import java.io.*;
 
 /**
- *Håller koll på alla former i en ArrayList
+ *HÃ¥ller koll pÃ¥ alla former i en ArrayList
  */
 
 public class Model implements Serializable
@@ -23,7 +23,7 @@ public class Model implements Serializable
 	}
 
 	/**
-	 * Tömmer listan med former
+	 * TÃ¶mmer listan med former
 	 */
 	public void clearShapes()
 	{
@@ -31,7 +31,7 @@ public class Model implements Serializable
 	}
 	
 	/**
-	 * Lägger till en form i listan
+	 * LÃ¤gger till en form i listan
 	 */
 	public void addShape(MyShape shape)
 	{
@@ -39,7 +39,7 @@ public class Model implements Serializable
 	}
 
 	/**
-	 * Ritar ut alla former på en Graphics
+	 * Ritar ut alla former pÃ¥ en Graphics
 	 */
 	public void drawAll(Graphics g)
 	{
@@ -50,7 +50,7 @@ public class Model implements Serializable
 	}
 
 	/**
-	 * Markerar det objekt som ligger högst upp på position x,y
+	 * Markerar det objekt som ligger hÃ¶gst upp pÃ¥ position x,y
 	 */
        	public void setSelectedShape(int x, int y)
 	{

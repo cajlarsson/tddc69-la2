@@ -2,8 +2,8 @@ package lab2;
 
 import java.awt.*;
 /**
- * Fabricerar nya former beroende pÂ vald f‰rg och typ.
- * Nyttjar protorype-mˆnstret, typ
+ * Fabricerar nya former beroende p√• vald f√§rg och typ.
+ * Nyttjar protorype-m√∂nstret, typ
  */
 
 public class ShapeFactory
@@ -11,7 +11,7 @@ public class ShapeFactory
 	private MyShape prototype;
 	
 /**
- * S‰tter standard v‰rden
+ * S√§tter standard v√§rden
  */
 	public ShapeFactory()
 	{
@@ -19,7 +19,7 @@ public class ShapeFactory
 	}
 
 	/**
-	 * Skapar en ny form pÂ koordinaterna
+	 * Skapar en ny form p√• koordinaterna
 	 */
 	public MyShape newShape(int x, int y )
 	{
@@ -29,7 +29,7 @@ public class ShapeFactory
 	}
 	
 	/**
-	 * Anger fabrikens produktf‰rg
+	 * Anger fabrikens produktf√§rg
 	 */
 	public void setColor(Color color)
 	{

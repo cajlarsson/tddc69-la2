@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * Varje fönster är en instans av denna klass
+ * Varje fÃ¶nster Ã¤r en instans av denna klass
  *
  */
 public class Window extends JFrame //
@@ -93,8 +93,8 @@ public class Window extends JFrame //
 	}
 
 	/**
-	 * Denna konstruktor tar fönstrets namn och vilket kontrollerar-objekt  som
-	 * den använder. Instansierar en egen meny och dekorerar den.
+	 * Denna konstruktor tar fÃ¶nstrets namn och vilket kontrollerar-objekt  som
+	 * den anvÃ¤nder. Instansierar en egen meny och dekorerar den.
 	 *
 	 */
 	public Window(String name, Controller controller)

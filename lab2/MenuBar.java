@@ -5,8 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- * Menypanelen, skapar sina egna form och färg knappar och anpassar formfabriken
- * vid klick på dessa
+ * Menypanelen, skapar sina egna form och fÃ¤rg knappar och anpassar formfabriken
+ * vid klick pÃ¥ dessa
  */
 public class MenuBar extends JPanel
 {

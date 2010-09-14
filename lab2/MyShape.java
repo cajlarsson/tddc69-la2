@@ -21,13 +21,12 @@ public abstract class MyShape implements Cloneable, Serializable{
 	}
 	
 	/**
-	 * Skall överlagras så att respektive form ritas ut korrekt
+	 * Skall Ã¶verlagras sÃ¥ att respektive form ritas ut korrekt
 	 */
-	public abstract void draw(Graphics g) {
-	}
+	public abstract void draw(Graphics g);
 	
 	/**
-	 * Anropar Object.clone() och fångar exception
+	 * Anropar Object.clone() och fÃ¥ngar exception
 	 */
 	public Object clone()
 	{
@@ -41,7 +40,7 @@ public abstract class MyShape implements Cloneable, Serializable{
 	}
 
 	/**
-	 * Anger färg 
+	 * Anger fÃ¤rg 
 	 */
 	public void setColor(Color color)
 	{
