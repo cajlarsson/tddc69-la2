@@ -6,37 +6,92 @@
 \begin{document}
 
 \title{Designbeslut för labb 2}
-\author{Caj Larsson\\Erik Lindholm}
-\maketitle
+\author{Caj Larsson\\Erik Lindholm}\maketitle
 
-Vårt första beslut var att dumpa det givna kodskelettet. Vi lade i början ned 
-mycket tid på att försöka förstå hur det var tänkt att den skulle kunna byggas
-ut till något som uppfyller alla krav. När vi började om från scratch gick det
-betydligt mycket fortare och vi kunde återanvända i princip all vår egna kod 
-utan speciellt mycket omarbetning.
+Vårt första beslut var att överge det givna kodskelettet. I början lade vi ned
+mycket tid på att försöka förstå hur det var tänkt att det skulle kunna byggas
+ut till något som uppfyller alla krav. Vi valde att börja om från scratch och då
+gick det betydligt fortare. Vi kunde då återanvända i princip all egen kod 
+utan mycket bearbetning. Vi upplevde att kodsklettet  var designat för ett 
+större projekt med mer avancerade arvsstrukturer och vy-hantering. Då vår labb 
+inte var så omfattande bedömde vi att kodsklettet snarare skulle bli en last.
 
 Vi valde att ha en klass som enbart instansierar vår kontrollerare som sedan
-instansierar allt som behövs.
+instansierar allt som behövs. På det sättet kunde vi få en mer modulär kodbas
+vilket möjliggör för senare integartion av kontrolleraren i andra projekt.
 
-Kontrolleraren är tänkt att det skall finnas en av. Den innehåller en modell
-som den agerar gränsnitt mot, och ärver in \texttt{Observable}. Detta 
-mellanlager har vi för att hålla modellen så enkel som möjligt då det är 
-troligt att den byts ut mot en med bättre prestanda. Ingen annan klass än 
-kontrolleraren gör saker med modellen för att vi ska vara säkra på att ingen
-ändring sker utan att ritytorna blir uppdaterade om detta.
+Det är tänkt att det att det bara skall finnas en kontrollerare. Kontrolleraren
+innehåller en modell för vilken den agerar gränsnitt. Vi har valt att ha detta
+mellanlager för att hålla modellen så enkel som möjligt då det är troligt att den
+byts ut mot en modell med bättre prestanda. Ingen annan klass än kontrolleraren
+gör saker med modellen för att vi ska vara säkra på att ingen ändring sker utan
+att ritytorna blir uppdaterade, hade vi inte gjort så fanns det risk att alla
+fönster inte skulle visa samma sak. 
+
+För att implementera ett observerare/observervabel-mönster så ärver kontrolleraren
+från \texttt{Observable} och ritytan implimenterar \texttt{Observer}
+
+Vi funderade på att göra kontrolleraren \texttt{static} för att slippa skicka
+runt den till alla objekt som behöver ha en referens till den, det skulle dock
+göra koden betydligt mindre återanvändningsbar och skulle tillåta sämre struktur
+på omgivande kod.
 
 Modellklassen är i princip en behållare för \texttt{MyShape} objekt med ett
-speciellt gränsnitt. Den har även koll på vilken form man har markerat.
+speciellt gränsnitt. Den har även koll på vilken form som är markerad. Hade 
+projektet varit större och koden upplevts mer relevant att återanvända så
+hade vi implementerat ett \texttt{Interface} för att underlätta eventuellt
+byte av modellklass. Vi upplevde att vi bara skrev en stor mängd gränsnitts- 
+metoder
 
-Vår fönsterklass skapar en menypanel med de knappar som rör vår formfabrik, de
+Vår fönsterklass skapar en menypanel med de knappar som rör vår formfabrik, 
 andra knapparna kräver tillgång till objekt vi inte tycker att den bör 
-känna till. I sin konstruktor lägger den till sin rityta i kontrollerarens 
-notifieringslista.
+känna till. Knappen som skapar nya fönster instansierar helt enkelt ett nytt
+fönsterobjekt och skickar med den kontrollerar objektet. Här skulle vi kunna
+låta kontrolleraren skapa fönstret och dem i en lista för att ha bättre 
+kontroll på vad som händer. Emellertid tyckte vi inte att det var relevant i 
+detta lilla projekt.
 
-Menypanelen har två stycken privata knappklasser som i sin konstruktor antingen
+Menypanelen har två privata knappklasser som i sin konstruktor antingen
 tar en färg eller en prototypform. I konstruktorn tar den sitt fönsters 
-formfabrik som knapparnas metoder ändrar prototypen påå 
+formfabrik som knapparnas metoder ändrar prototypen på. Dekoreringen av panelen
+blir väldigt städad och lätt att bygga ut. Vi valde att inte intigrera fabriken
+i panelen och att inte intigrera menypanelen i fönstret för att göra den
+frivillig.
 
+Ritytan implimenterar \texttt{Observer} den får en formfabrik och sin 
+kontrollerare i sin konstruktor och skapar en egen \texttt{ClickListener} och
+en \texttt{MouseMotionListener}. Lyssnarna används för att flytta markera och
+signalera till formfabriken respektive kontrolleraren när en form ska läggas 
+till eller tas bort och även då om en form ska flyttas eller markeras.
+Alla instanser av ritytan uppdateras genom observerarlagret så att de alla
+visar en uppdaterad verison av modellen i sina respektive ytor.
+
+Alla konkreta formklasser ärver det mesta av sin funktionalitet från 
+\texttt{MyShape}, såsom konstruktor en kloningsmetod och metoder för att 
+ändra och läsa instansvariabler. Det enda som en konkret formklass behöver 
+implementera är en konstruktor som anropar superkonstruktorn samt end 
+\texttt{draw} metod som ritar ut den på angiven \texttt{Graphics}. Vi har inte 
+kommit på något alternativ till detta som alls går att jämföra med.
+
+Formfabriken nyttjar ett \texttt{Prototype pattern} liknande designmönster
+för att skapa nya former. Formfabriken har olika metoder för att ändra
+produktens färg och form. Orsaken till att vi inte valde ett 
+\texttt{Factory pattern} var för att vi inte ansåg att det inte gick att
+uppfylla kraven eller så hade vi fått göra multipla formfabriker så att vi
+har en för varje form.
+
+Vi funderade på att låta en \texttt{Timer} ärva från \texttt{Observable} och
+låta den skicka medelanden till alla \texttt{MyShape} att de ska uppdatera sitt
+animeringsläge, som de då skulle få implementera i underklassen. Då skulle vår
+formfabrik registrera alla formobjekt som lyssnare. Även ritytorna behövs läggas
+till för att uppdatering ska ske.
+
+Ofta skulle vi kunna använt arv mer för att snygga upp koden, emellertid 
+gjorde vi avägningar för att göra koden modulär och följa Javas riktlinjer om
+objektorientering.
+
+Vi valde att skriva all kod på engelska då java är uppbyggt på engelska och det
+blir då omöjlig att ha all kod på samma språk. Dock valde vi att skriva all
+dokumentation på svenska då kursen går på svenska.
 
 \end{document}
-
