@@ -106,7 +106,6 @@ public class Window extends JFrame //
 	    setLayout(new BorderLayout());
 	    
 	    PaintArea paintArea = new PaintArea(shapeFactory,controller);
-	    controller.addObserver(paintArea);
 	    add(paintArea,BorderLayout.CENTER);
 	    
 	    MenuBar menuBar = new MenuBar(shapeFactory);

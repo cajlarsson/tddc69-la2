@@ -46,7 +46,8 @@ public class PaintArea extends JComponent implements Observer{
 	public PaintArea(ShapeFactory shapeFactory, Controller controller)
 	{
 		super();
-
+		controller.addObserver(this);
+		
 		addMouseListener(new ClickListener());
 	   
 		final Controller fController = controller;
