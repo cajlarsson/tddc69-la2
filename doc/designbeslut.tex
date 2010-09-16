@@ -29,7 +29,11 @@ att ritytorna blir uppdaterade, hade vi inte gjort så fanns det risk att alla
 fönster inte skulle visa samma sak. 
 
 För att implementera ett observerare/observervabel-mönster så ärver kontrolleraren
-från \texttt{Observable} och ritytan implimenterar \texttt{Observer}
+från \texttt{Observable} och ritytan implimenterar \texttt{Observer}. Ritytan
+ansvarar själv för att lägga till sig i kontrollerarens notifikationslista och
+gör det i sin konstruktor. Varje gång som en rityta vill ändra på modellen
+skickar den ett medelande till kontrolleraren. Kontrolleraren skickar sedan 
+medelanden till alla ritytor om att modellen har ändrats och de ritar om sig. 
 
 Vi funderade på att göra kontrolleraren \texttt{static} för att slippa skicka
 runt den till alla objekt som behöver ha en referens till den, det skulle dock
@@ -73,12 +77,11 @@ implementera är en konstruktor som anropar superkonstruktorn samt end
 \texttt{draw} metod som ritar ut den på angiven \texttt{Graphics}. Vi har inte 
 kommit på något alternativ till detta som alls går att jämföra med.
 
-Formfabriken nyttjar ett \texttt{Prototype pattern} liknande designmönster
+Formfabriken nyttjar ett prototypmönster liknande designmönster
 för att skapa nya former. Formfabriken har olika metoder för att ändra
-produktens färg och form. Orsaken till att vi inte valde ett 
-\texttt{Factory pattern} var för att vi inte ansåg att det inte gick att
-uppfylla kraven eller så hade vi fått göra multipla formfabriker så att vi
-har en för varje form.
+produktens färg och form. Orsaken till att vi inte valde ett fabrikmönster
+var för att vi ansåg att det inte gick att uppfylla kraven eller så 
+hade vi fått göra multipla formfabriker så att vi hade en för varje form.
 
 Vi funderade på att låta en \texttt{Timer} ärva från \texttt{Observable} och
 låta den skicka medelanden till alla \texttt{MyShape} att de ska uppdatera sitt
